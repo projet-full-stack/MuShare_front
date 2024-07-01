@@ -1,5 +1,5 @@
 import React from 'react'
-import RegisterMolecul from '@/component/moleculs/registerMolecul/RegisterMolecul'
+import RegisterMolecul from '@/component/molecules/registerMolecule/RegisterMolecule'
 
 function Register() {
   return (

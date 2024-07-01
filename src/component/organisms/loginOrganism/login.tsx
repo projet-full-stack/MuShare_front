@@ -1,4 +1,4 @@
-import LoginMolecul from '@/component/moleculs/loginMolecul/LoginMolecule'
+import LoginMolecul from '@/component/molecules/loginMolecul/LoginMolecule'
 import React from 'react'
 
 function LoginOrganism() {

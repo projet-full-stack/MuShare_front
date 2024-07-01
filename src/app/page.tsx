@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 export default function Home() {
   let token = false;
   if(!token){
-    redirect('/login');
+    // redirect('/login');
   }
   return (
     <main >
