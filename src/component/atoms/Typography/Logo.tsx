@@ -16,7 +16,7 @@ const ColorEndTitle = styled.span`
 
 function Logo() {
     return (
-        <img src="/img/MuShare.png" alt="MuShare" width="200"  />
+        <img src="/img/MuShare.png" alt="MuShare" width="200"  style={{ position: "absolute"}}/>
     )
 }
 

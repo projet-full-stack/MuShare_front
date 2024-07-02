@@ -2,6 +2,8 @@ import NavbarElementMolecule from "@/component/molecules/navbarMolecule/NavbarEl
 import styled  from "styled-components";
 
 const StyledDiv = styled.div`
+    position: absolute;
+    margin-top: 7rem;
     background-color: #222222;
     border: solid;
     border-radius: 10px;

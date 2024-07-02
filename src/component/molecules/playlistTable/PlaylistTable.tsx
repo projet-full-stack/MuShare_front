@@ -3,7 +3,7 @@ import PlaylistItem from '../playlistItem/PlaylistItem'
 
 function PlaylistTable(props: any) {
     return (
-        <table style={{borderCollapse:"collapse"}}>
+        <table style={{borderCollapse:"collapse", color:"white"}}>
             <thead style={{ borderBottom:"solid 1px black", marginBottom:"1rem" }}>
                 <tr>
                     <th>Id</th>
