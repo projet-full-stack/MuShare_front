@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import ProfilOrganism from '@/component/organisms/ProfilOrganism/profilOrganism'
+import ProfilOrganism from '@/component/organisms/profilOrganism/profilOrganism'
 
 
 const Profil = () => {

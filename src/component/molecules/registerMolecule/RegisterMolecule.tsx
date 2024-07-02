@@ -1,5 +1,5 @@
-import { Button, Container, Input, Typography } from '@/component/atoms'
 import React from 'react'
+import { Button, Container, Input, Typography } from '@/component/atoms'
 
 function RegisterMolecul() {
   return (
