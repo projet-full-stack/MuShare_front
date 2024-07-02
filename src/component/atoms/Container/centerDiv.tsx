@@ -4,6 +4,8 @@ export const CenterDiv = styled.div<{ $height?: string, $width?: string, $margin
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
+    align-items: center;
     width: ${props => props.$width ?? '40rem'};
     height: ${props => props.$height ?? '25rem'};
     border-radius: 5px;

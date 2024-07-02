@@ -1,3 +1,4 @@
 import CenterDiv from "./centerDiv";
+import RandomDiv from "./randomDiv";
 
-export { CenterDiv };
+export { CenterDiv, RandomDiv };
