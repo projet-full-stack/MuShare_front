@@ -16,7 +16,7 @@ function NavbarOrganism() {
   return (
     <StyledDiv>
       <NavbarElementMolecule icon='home' alt='Accueil' text="Accueil" location="/"/>
-      <NavbarElementMolecule icon='search' alt='Rechercher' text="Rechercher" location="/"/>
+      <NavbarElementMolecule icon='search' alt='Rechercher' text="Rechercher" location="/search"/>
       <NavbarElementMolecule icon='account_circle' alt='Profil' text="Profil" location="/profil"/>
     </StyledDiv>
   );
