@@ -15,7 +15,6 @@ export default function RootLayout({
       <html lang="en" style={{backgroundColor: "black"}}>
         <body >{children}
         <NavbarOrganism/></body>
-        
       </html>
     </Provider>
   )

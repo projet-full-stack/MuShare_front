@@ -23,7 +23,6 @@ export const fetchPlaylists = createAsyncThunk('playlist/fetchPlaylists', async 
     })
 });
 
-
 const playlistSlice = createSlice({
     name: 'playlist',
     initialState,
