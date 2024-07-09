@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import 'dotenv/config'
 
 let  initialState =  {
     playlists: [],
@@ -14,7 +15,8 @@ const params: RequestInit = {
 }
 
 export const fetchPlaylists = createAsyncThunk('playlist/fetchPlaylists', async () => {
-    return fetch('http://localhost:8000/api/playlist')
+
+    return fetch(process.env.ROOT_ENDPOINT+'/api/playlist')
     .then(response => response.json())
     .then(data => {
         return data

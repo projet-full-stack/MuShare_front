@@ -13,9 +13,10 @@ function PlaylistMolecule() {
         dispatch(fetchPlaylists())
     }, []);
   return (
-    <div style={{display:"flex", flexDirection:"column", marginTop:"2rem", marginLeft:"5rem"}}>
-        <Container.RandomDiv>
+    <div style={{display:"flex", flexDirection:"column", marginTop:"2rem", marginLeft:"5rem", color:"white"}}>
+        <Container.RandomDiv $height='auto'>
             <h1>Playlist</h1>
+            {playlists.status === 'loading' && <h1>Loading...</h1>}
             {playlists.status === 'succeeded' && <PlaylistTable playlists={playlists.playlists}/>}
         </Container.RandomDiv>
     </div>
