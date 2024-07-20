@@ -2,16 +2,14 @@ import { Icon } from "@/component/atoms/Media";
 import { useState } from "react";
 import styled from "styled-components";
 
-const StyledDiv = styled.div`
+const StyledDiv = styled.div<{hover:boolean}>`
     display: flex;
     flex-direction: column;
     color: white;
     justify-content: space-between;
     margin-left: 20px;
     margin-right: 20px;
-    &:hover {
-        cursor: pointer;
-    }
+    ${props => props.hover && `background-color: #333333;`}
 }
 `;
 
@@ -53,10 +51,32 @@ margin-top: 7px;
 }
 `;
 
+const StyledFavorite = styled.div`
+display: flex;
+position: absolute;
+margin-left: 350px;
+z-index: 10;
+&:hover {
+    cursor: pointer;
+}
+}
+`;
+
 function MusicItem({title='', author='', username=''}) {
     const [hover, setHover] = useState(false);
+    const [like, setLike] = useState(false);
+    const [colorLike, setColorLike] = useState('grey');
     return (
-        <StyledDiv onMouseOver={() => {
+        <>
+                <StyledFavorite
+                onClick={() => {
+                    setColorLike(colorLike == 'grey' ? 'red' : 'grey');
+                    setLike(like ? false : true);
+                }}
+            >
+                <Icon icon='favorite' hover={colorLike} fill={like} size={30}/>
+            </StyledFavorite>
+        <StyledDiv hover={hover} onMouseOver={() => {
             setHover(true);
         }}
         onMouseOut={() => {
@@ -73,7 +93,8 @@ function MusicItem({title='', author='', username=''}) {
                 </StyledPlayer>
             }
         </StyledDiv>
-        
+
+        </>
     )
 }
 
