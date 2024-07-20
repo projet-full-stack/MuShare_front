@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import MusicItem from "../musicItem.tsx/MusicItem";
 import { fetchSongsLasts } from "@/store/features/lastSongSlice";
+import { CircularProgress } from "@mui/material";
 
 const StyledRecentMusicMolecule = styled.div`
     position: absolute;
@@ -11,8 +12,8 @@ const StyledRecentMusicMolecule = styled.div`
     margin-left: 17rem;
     margin-top: 3rem;   
     background-color: #222222;
-    border: solid;
     border-radius: 10px;
+    border: none;
 `;
 
 function RecentMusicsMolecule() {
@@ -27,7 +28,7 @@ function RecentMusicsMolecule() {
         <StyledRecentMusicMolecule>
             
             <Title>Musiques ajoutées récemment :</Title>
-            {songs.status === 'loading' && <p>Loading...</p>}
+            {songs.status === 'loading' && <CircularProgress sx={{marginLeft:"45%"}}/>}
             {songs.status === 'succeeded' && songs.songs.map((song: any) => (
                 <MusicItem title={song.title} author={song.author} username={song.user.username}></MusicItem>
             ))}

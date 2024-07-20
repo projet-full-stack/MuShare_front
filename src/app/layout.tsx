@@ -12,7 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <Provider store={store}>
-      <html lang="en" style={{backgroundColor: "black"}}>
+      <html lang="en" style={{backgroundColor: "#0B162C"}}>
         <body >{children}
         <NavbarOrganism/></body>
       </html>

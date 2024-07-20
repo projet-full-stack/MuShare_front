@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+require('dotenv').config()
 
 
 let initialState = {
@@ -7,8 +8,6 @@ let initialState = {
 }
 
 export const fetchSongsLasts = createAsyncThunk('song/fetchSongs', async () => {
-    require('dotenv').config()
-    console.log(process.env.ROOT_ENDPOINT);
 
     return fetch('http://localhost:8000/api/songs/last')
 

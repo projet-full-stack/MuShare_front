@@ -3,6 +3,7 @@ import { fetchSongs } from "@/store/features/songSlice";
 import { useEffect } from "react";
 import MusicItem from "../musicItem.tsx/MusicItem";
 import styled from "styled-components";
+import { CircularProgress } from "@mui/material";
 
 const StyledRecentMusicMolecule = styled.div`
     position: absolute;
@@ -30,7 +31,7 @@ function SearchSongsMolecule({value=''}) {
     return (
         <StyledRecentMusicMolecule>
             
-            {songs.status === 'loading' && <p>Loading...</p>}
+            {songs.status === 'loading' && <CircularProgress sx={{marginLeft:"45%"}}/>}
             {songs.status === 'succeeded' && songsFiltered.map((song: any) => (
                 <MusicItem title={song.title} author={song.author} username={song.user.username}></MusicItem>
             ))}

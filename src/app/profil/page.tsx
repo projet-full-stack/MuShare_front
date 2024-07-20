@@ -1,11 +1,13 @@
 'use client'
+import ProfilOrganism from '@/component/organisms/ProfilOrganism/profilOrganism'
 import React from 'react'
-import ProfilOrganism from '@/component/organisms/profilOrganism/profilOrganism'
 
 
 const Profil = () => {
   return (
-    <ProfilOrganism />
+    <>
+      <ProfilOrganism />
+    </>
   )
 }
 
