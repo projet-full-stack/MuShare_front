@@ -30,7 +30,7 @@ function RecentMusicsMolecule() {
             <Title>Musiques ajoutées récemment :</Title>
             {songs.status === 'loading' && <CircularProgress sx={{marginLeft:"45%"}}/>}
             {songs.status === 'succeeded' && songs.songs.map((song: any) => (
-                <MusicItem title={song.title} author={song.author} username={song.user.username}></MusicItem>
+                <MusicItem title={song.title} author={song.author} username={song.owner.username}></MusicItem>
             ))}
 
         </StyledRecentMusicMolecule>

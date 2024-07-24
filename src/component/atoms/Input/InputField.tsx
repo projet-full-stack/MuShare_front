@@ -6,6 +6,7 @@ const StyledInput = styled.input<{ $width?: string; $height: string; $margin: st
     height: ${props => props.$height ?? '3rem'};
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin-bottom: 1rem;
     // box-shadow: 1px 1px 5px 1px #ccc;
     padding: 0.5rem;
     font-size: 1rem;

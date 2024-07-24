@@ -3,12 +3,14 @@ import playlistSlice from "./features/playlistSlice";
 import songSlice from "./features/songSlice";
 import lastSongSlice from "./features/lastSongSlice";
 import readerSlice from "./features/readerSlice";
+import createSongSlice from "./features/createSong";
 
 const store = configureStore({
     reducer: {
         playlists: playlistSlice.reducer,
         songs: songSlice.reducer,
         lastSongs: lastSongSlice.reducer,
+        createSong: createSongSlice.reducer,
         reader: readerSlice.reducer
     },
     });

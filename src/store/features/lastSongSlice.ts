@@ -7,10 +7,17 @@ let initialState = {
     status: "idle"
 }
 
+const params: RequestInit = {
+    method: 'GET',
+    headers : {
+        ContentType: 'application/json',
+        AccessControlAllowOrigin: '*'
+    },
+}
+
 export const fetchSongsLasts = createAsyncThunk('song/fetchSongs', async () => {
-
+    
     return fetch('http://localhost:8000/api/songs/last')
-
     .then(response => response.json())
     .then(data => {
         return data
@@ -28,6 +35,7 @@ const lastSongSlice = createSlice({
         })
         .addCase(fetchSongsLasts.fulfilled, (state, action) => {
             state.status = 'succeeded';
+            console.log(action.payload);
             state.lastSongs = action.payload;
         })
         .addCase(fetchSongsLasts.rejected, (state, action) => {

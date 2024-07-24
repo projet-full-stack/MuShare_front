@@ -33,7 +33,7 @@ function SearchSongsMolecule({value=''}) {
             
             {songs.status === 'loading' && <CircularProgress sx={{marginLeft:"45%"}}/>}
             {songs.status === 'succeeded' && songsFiltered.map((song: any) => (
-                <MusicItem title={song.title} author={song.author} username={song.user.username}></MusicItem>
+                <MusicItem title={song.title} author={song.author} username={song.owner.username}></MusicItem>
             ))}
 
         </StyledRecentMusicMolecule>
