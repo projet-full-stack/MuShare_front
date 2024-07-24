@@ -17,7 +17,7 @@ function AddSongMolecule() {
     const [file, setFile] = useState<File>();
     const dispatch = useAppDispatch();
 
-    const [song, setSong] = useState({});
+    const [song, setSong] = useState<any>();
 
 
     const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
