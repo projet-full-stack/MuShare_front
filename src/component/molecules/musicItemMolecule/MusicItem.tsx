@@ -1,5 +1,7 @@
 import { Icon } from "@/component/atoms/Media";
+import { setIsVisible } from "@/store/features/readerSlice";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 
 const StyledDiv = styled.div<{hover:boolean}>`
@@ -62,20 +64,27 @@ z-index: 10;
 }
 `;
 
-function MusicItem({title='', author='', username=''}) {
+function MusicItem({title='', author='', username='', id=''}) {
     const [hover, setHover] = useState(false);
     const [like, setLike] = useState(false);
     const [colorLike, setColorLike] = useState('grey');
+
+    const dispatch = useDispatch();
+
+    const handleClick = () => {
+        dispatch(setIsVisible());
+    }
+
     return (
-        <>
-                <StyledFavorite
-                onClick={() => {
-                    setColorLike(colorLike == 'grey' ? 'red' : 'grey');
-                    setLike(like ? false : true);
-                }}
-            >
-                <Icon icon='favorite' hover={colorLike} fill={like} size={30}/>
-            </StyledFavorite>
+        <div onClick={() => {handleClick()}}>
+        <StyledFavorite
+        onClick={() => {
+            setColorLike(colorLike == 'grey' ? 'red' : 'grey');
+            setLike(like ? false : true);
+        }}
+        >
+        <Icon icon='favorite' hover={colorLike} fill={like} size={30}/>
+        </StyledFavorite>
         <StyledDiv hover={hover} onMouseOver={() => {
             setHover(true);
         }}
@@ -94,7 +103,7 @@ function MusicItem({title='', author='', username=''}) {
             }
         </StyledDiv>
 
-        </>
+        </div>
     )
 }
 

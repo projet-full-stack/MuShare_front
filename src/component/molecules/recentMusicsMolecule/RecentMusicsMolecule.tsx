@@ -1,8 +1,8 @@
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { Title } from "@/component/atoms/Typography";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import MusicItem from "../musicItem.tsx/MusicItem";
+import MusicItem from "../musicItemMolecule/MusicItem";
 import { fetchSongsLasts } from "@/store/features/lastSongSlice";
 import { CircularProgress } from "@mui/material";
 
@@ -20,6 +20,10 @@ function RecentMusicsMolecule() {
 
     const dispatch = useAppDispatch();
     const songs = useAppSelector((state) => state.songs);
+    const [isClient, setIsClient] = useState(false);
+    useEffect(() => {
+        setIsClient(true)
+      }, [])
 
     useEffect(() => {
         dispatch(fetchSongsLasts());
@@ -30,7 +34,7 @@ function RecentMusicsMolecule() {
             <Title>Musiques ajoutées récemment :</Title>
             {songs.status === 'loading' && <CircularProgress sx={{marginLeft:"45%"}}/>}
             {songs.status === 'succeeded' && songs.songs.map((song: any) => (
-                <MusicItem title={song.title} author={song.author} username={song.owner.username}></MusicItem>
+                <MusicItem title={song.title} author={song.author} username={song.owner.username} id={song.id}></MusicItem>
             ))}
 
         </StyledRecentMusicMolecule>

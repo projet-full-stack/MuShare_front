@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { fetchSongs } from "@/store/features/songSlice";
 import { useEffect } from "react";
-import MusicItem from "../musicItem.tsx/MusicItem";
+import MusicItem from "../musicItemMolecule/MusicItem";
 import styled from "styled-components";
 import { CircularProgress } from "@mui/material";
 

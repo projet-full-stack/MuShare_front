@@ -4,6 +4,10 @@ require('dotenv').config()
 
 let initialState = {
     reader: [],
+    isVisible: false,
+    title: "",
+    author: "",
+    file: "",
     status: "idle"
 }
 
@@ -21,7 +25,11 @@ export const fetchReader = createAsyncThunk('reader/fetchReader', async () => {
 const readerSlice = createSlice({
     name: "reader",
     initialState,
-    reducers: {},
+    reducers: {
+        setIsVisible: state => {
+            state.isVisible = !state.isVisible;
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(fetchReader.pending, (state, action) => {
             state.status = 'loading';
@@ -36,4 +44,5 @@ const readerSlice = createSlice({
     }
 });
 
+export const { setIsVisible } = readerSlice.actions;
 export default readerSlice;
