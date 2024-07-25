@@ -8,13 +8,12 @@ function ReaderMolecule() {
   const isVisible = useAppSelector((state) => state.reader.isVisible);
   const reader = useAppSelector((state) => state.reader)
 
-  console.log(isVisible);
 
   useEffect(() => {
       dispatch(fetchReader())
   }, []);
   return (
-    <div style={{zIndex: "5000", bottom: '0'}}>{reader.status == "succeeded" && isVisible && <span>{parse(reader.reader[0]['htmlCode'])}</span>}</div>
+    <div>{reader.status == "succeeded" && isVisible && <span>{parse(reader.reader[0]['htmlCode'])}</span>}</div>
   )
 }
 

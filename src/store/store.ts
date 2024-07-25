@@ -4,6 +4,8 @@ import songSlice from "./features/songSlice";
 import lastSongSlice from "./features/lastSongSlice";
 import readerSlice from "./features/readerSlice";
 import createSongSlice from "./features/createSong";
+import authenticationSlice from "./features/authenticationSlice";
+import registerSlice from "./features/registerSlice";
 
 const store = configureStore({
     reducer: {
@@ -11,7 +13,9 @@ const store = configureStore({
         songs: songSlice.reducer,
         lastSongs: lastSongSlice.reducer,
         createSong: createSongSlice.reducer,
-        reader: readerSlice.reducer
+        reader: readerSlice.reducer,
+        authentication: authenticationSlice.reducer,
+        register: registerSlice.reducer,
     },
     });
 

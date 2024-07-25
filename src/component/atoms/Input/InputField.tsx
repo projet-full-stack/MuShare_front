@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { forwardRef, useState } from 'react'
 import styled from 'styled-components';
 
 const StyledInput = styled.input<{ $width?: string; $height: string; $margin: string }>`
@@ -13,15 +13,14 @@ const StyledInput = styled.input<{ $width?: string; $height: string; $margin: st
     ${props => props.$margin && `margin: ${props.$margin}`}
 
 `;
-function InputField({ placeholder = "", ...props} ) {
+const InputField = forwardRef(function InputField(props: any, ref: any) {
+    
     return (
         <>
-            <StyledInput $margin={props.margin} $width={props.width} $height={props.height} type={props.type} placeholder={placeholder} 
-            onChange={(event) => {
-                props.setValue(event.target.value)
-            }}/>
+            <StyledInput ref={ref} $margin={props.margin} $width={props.width} $height={props.height} type={props.type} placeholder={props.placeholder} 
+            />
         </>
     )
-}
+})
 
 export default InputField

@@ -16,9 +16,8 @@ const StyledButton = styled.button<{ $width?: string; $height: string; $margin: 
 `;
 
 const AuthButton = (props : any) => {
-  const router = useRouter()
   return (
-    <StyledButton $width={props.width}  onClick={() => router.push(props.location)} $height={props.height} $margin='2rem 0 0 0'>
+    <StyledButton  $width={props.width}  onClick={() => props.onClick()} $height={props.height} $margin='2rem 0 0 0'>
         {props.children}
     </StyledButton>
   )

@@ -20,6 +20,7 @@ export const fetchSongsLasts = createAsyncThunk('song/fetchSongs', async () => {
     return fetch('http://localhost:8000/api/songs/last')
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         return data
     })
 });
