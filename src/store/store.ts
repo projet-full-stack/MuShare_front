@@ -6,12 +6,14 @@ import readerSlice from "./features/readerSlice";
 import createSongSlice from "./features/createSong";
 import authenticationSlice from "./features/authenticationSlice";
 import registerSlice from "./features/registerSlice";
+import songByIdSlice from "./features/songById";
 
 const store = configureStore({
     reducer: {
         playlists: playlistSlice.reducer,
         songs: songSlice.reducer,
         lastSongs: lastSongSlice.reducer,
+        songById: songByIdSlice.reducer,
         createSong: createSongSlice.reducer,
         reader: readerSlice.reducer,
         authentication: authenticationSlice.reducer,

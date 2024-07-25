@@ -1,6 +1,8 @@
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { Icon } from "@/component/atoms/Media";
-import { setIsVisible } from "@/store/features/readerSlice";
-import { useState } from "react";
+import { setIsVisible, setTitle, setAuthor, setFile } from "@/store/features/readerSlice";
+import { fetchSongById } from "@/store/features/songById";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 
@@ -64,15 +66,24 @@ z-index: 10;
 }
 `;
 
-function MusicItem({title='', author='', username='', id=''}) {
+function MusicItem({title='', author='', username='', file={}, id='', onClick={}}) {
     const [hover, setHover] = useState(false);
     const [like, setLike] = useState(false);
     const [colorLike, setColorLike] = useState('grey');
 
-    const dispatch = useDispatch();
+    const songById = useAppSelector((state) => state.songById);
+
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(fetchSongById(id));
+    }, [])
 
     const handleClick = () => {
         dispatch(setIsVisible());
+        dispatch(setTitle(title));
+        dispatch(setAuthor(author));
+        dispatch(setFile(file))
     }
 
     return (

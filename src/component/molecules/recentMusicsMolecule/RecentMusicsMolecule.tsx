@@ -28,13 +28,15 @@ function RecentMusicsMolecule() {
     useEffect(() => {
         dispatch(fetchSongsLasts());
     }, []);
+
+    
     return (
         <StyledRecentMusicMolecule>
             
             <Title>Musiques ajoutées récemment :</Title>
             {songs.status === 'loading' && <CircularProgress sx={{marginLeft:"45%"}}/>}
             {songs.status === 'succeeded' && songs.songs.map((song: any) => (
-                <MusicItem title={song.title} author={song.author} username={song.owner.username} id={song.id}></MusicItem>
+                <MusicItem title={song.title} author={song.author} username={song.owner.username} file={song.downloadedFile} id={song.id}></MusicItem>
             ))}
 
         </StyledRecentMusicMolecule>

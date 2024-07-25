@@ -7,7 +7,10 @@ let initialState = {
     isVisible: false,
     title: "",
     author: "",
-    file: "",
+    file: {
+        id: 0,
+        'realPath': "",
+    },
     status: "idle"
 }
 
@@ -28,6 +31,16 @@ const readerSlice = createSlice({
     reducers: {
         setIsVisible: state => {
             state.isVisible = !state.isVisible;
+        },
+        setTitle: (state, actions) => {
+            state.title = actions.payload;
+        },
+        setAuthor: (state, actions) => {
+            state.author = actions.payload;
+        },
+        setFile: (state, actions) => {
+            //state.file = actions.payload
+            state.file = actions.payload
         }
     },
     extraReducers: (builder) => {
@@ -45,4 +58,7 @@ const readerSlice = createSlice({
 });
 
 export const { setIsVisible } = readerSlice.actions;
+export const { setTitle } = readerSlice.actions;
+export const { setAuthor } = readerSlice.actions;
+export const { setFile } = readerSlice.actions;
 export default readerSlice;
