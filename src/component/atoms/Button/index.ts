@@ -1,5 +1,5 @@
 import AuthButton from "./AuthButton";
 
-export {
+export default {
     AuthButton
 }

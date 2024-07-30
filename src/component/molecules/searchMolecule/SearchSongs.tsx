@@ -19,9 +19,10 @@ const StyledRecentMusicMolecule = styled.div`
 function SearchSongsMolecule({value=''}) {
     const dispatch = useAppDispatch();
     const songs = useAppSelector((state) => state.songs);
+    const token = useAppSelector((state: any) => state.authentication.token) ?? localStorage.getItem('token');
 
     useEffect(() => {
-        dispatch(fetchSongs());
+        dispatch(fetchSongs(token));
     }, []);
 
     let songsFiltered: typeof songs.songs[] = [];

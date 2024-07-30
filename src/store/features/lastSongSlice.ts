@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-require('dotenv').config()
 
 
 let initialState = {
@@ -15,9 +14,12 @@ const params: RequestInit = {
     },
 }
 
-export const fetchSongsLasts = createAsyncThunk('song/fetchSongs', async () => {
-    
-    return fetch('http://localhost:8000/api/songs/last')
+export const fetchSongsLasts = createAsyncThunk('song/fetchSongs', async (token) => {
+    console.log(process.env.NEXT_PUBLIC_ROOT_ENDPOINT)
+    return fetch(process.env.NEXT_PUBLIC_ROOT_ENDPOINT+'/api/songs/last', {
+        headers: {
+            Authorization: `Bearer ${token}`
+    }})
     .then(response => response.json())
     .then(data => {
         console.log(data);
@@ -36,7 +38,6 @@ const lastSongSlice = createSlice({
         })
         .addCase(fetchSongsLasts.fulfilled, (state, action) => {
             state.status = 'succeeded';
-            console.log(action.payload);
             state.lastSongs = action.payload;
         })
         .addCase(fetchSongsLasts.rejected, (state, action) => {

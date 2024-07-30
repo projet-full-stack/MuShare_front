@@ -1,6 +1,4 @@
-import { Title } from '@/component/atoms/Typography';
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import 'dotenv/config'
 
 let initialState = {
     songs: [],
@@ -25,7 +23,7 @@ export const createSong = createAsyncThunk('song/createSong', async (song: any) 
 
     console.log(song.file);
 
-    return fetch('http://localhost:8000/api/songs', {
+    return fetch(process.env.NEXT_PUBLIC_ROOT_ENDPOINT+'/api/songs', {
         method: 'POST',
         body: formData
     })

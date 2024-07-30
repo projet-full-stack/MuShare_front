@@ -1,6 +1,6 @@
-import { Typography } from "@/component/atoms";
-import { Icon } from "@/component/atoms/Media";
+import Typography from "@/component/atoms/Typography";
 import styled from "styled-components";
+import Media from "@/component/atoms/Media" 
 import { useState } from "react";
 import { cursorTo } from "readline";
 import { useRouter } from 'next/navigation'
@@ -37,7 +37,7 @@ const NavbarElementMolecule = ({icon = '', alt = '', text = '', location=''}) =>
                 router.push(location);
             }
             }>
-            <Icon icon={icon} hover={hoverColor}/>
+            <Media.Icon icon={icon} hover={hoverColor}/>
             <Typography.NavbarText hover={hoverColor}>{text}</Typography.NavbarText>
         </StyledDiv>
 

@@ -1,8 +1,11 @@
-import { Icon } from "@/component/atoms/Media";
 import { useState } from "react";
+import Media from "@/component/atoms/Media";
+import Icon from "@/component/atoms/Media/Icon";
 import styled from "styled-components";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { setIsVisible } from "@/store/features/readerSlice";
 
-const StyledDiv = styled.div<{hover:boolean}>`
+const StyledDiv = styled.div<{ hover: boolean }>`
     display: flex;
     flex-direction: column;
     color: white;
@@ -13,19 +16,19 @@ const StyledDiv = styled.div<{hover:boolean}>`
 }
 `;
 
-const StyledTitle = styled.div<{hover:boolean}>`
+const StyledTitle = styled.div<{ hover: boolean }>`
     color: #e6e600;
     font-weight: bold;
     font-size: 120%;
     ${props => props.hover && `opacity: 80%;`}
 }`;
 
-const StyledAuthor = styled.div<{hover:boolean}>`
+const StyledAuthor = styled.div<{ hover: boolean }>`
     font-size: 90%;
     ${props => props.hover && `opacity: 80%;`}
 }`;
 
-const StyledUser = styled.div<{hover:boolean}>`
+const StyledUser = styled.div<{ hover: boolean }>`
     display: flex;
     justify-content: flex-end;
     font-size: 80%;
@@ -62,37 +65,41 @@ z-index: 10;
 }
 `;
 
-function MusicItem({title='', author='', username=''}) {
+function MusicItem({ title = '', author = '', username = '' }) {
+    const dispatch = useAppDispatch();
     const [hover, setHover] = useState(false);
     const [like, setLike] = useState(false);
     const [colorLike, setColorLike] = useState('grey');
+    const isVisible = useAppSelector((state) => state.reader.isVisible);
     return (
         <>
-                <StyledFavorite
+            <StyledFavorite
                 onClick={() => {
                     setColorLike(colorLike == 'grey' ? 'red' : 'grey');
                     setLike(like ? false : true);
+                    dispatch(setIsVisible());
+
                 }}
             >
-                <Icon icon='favorite' hover={colorLike} fill={like} size={30}/>
+                <Icon icon='favorite' hover={colorLike} fill={like} size={30} />
             </StyledFavorite>
-        <StyledDiv hover={hover} onMouseOver={() => {
-            setHover(true);
-        }}
-        onMouseOut={() => {
-            setHover(false);
-        
-        }}
-        >
-            <StyledTitle hover={hover}>{title}</StyledTitle>
-            <StyledAuthor hover={hover}>{author}</StyledAuthor>
-            <StyledUser hover={hover}>Ajoutée par : {username}</StyledUser>
-            <StyledDivider/>
-            {hover && <StyledPlayer>
-                    <Icon icon='play_circle' hover="white"/>                
+            <StyledDiv hover={hover} onMouseOver={() => {
+                setHover(true);
+            }}
+                onMouseOut={() => {
+                    setHover(false);
+
+                }}
+            >
+                <StyledTitle hover={hover}>{title}</StyledTitle>
+                <StyledAuthor hover={hover}>{author}</StyledAuthor>
+                <StyledUser hover={hover}>Ajoutée par : {username}</StyledUser>
+                <StyledDivider />
+                {hover && <StyledPlayer>
+                    <Icon icon='play_circle' hover="white" />
                 </StyledPlayer>
-            }
-        </StyledDiv>
+                }
+            </StyledDiv>
 
         </>
     )

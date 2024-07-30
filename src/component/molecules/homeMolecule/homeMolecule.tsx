@@ -1,4 +1,4 @@
-import { Logo, Title } from "@/component/atoms/Typography";
+import Typography from "@/component/atoms/Typography";
 import styled from "styled-components";
 
 const StyledHomeMolecule = styled.div`
@@ -9,7 +9,7 @@ const StyledHomeMolecule = styled.div`
 
 const HomeMolecule = () => {
     return (
-        <Logo />
+        <Typography.Logo />
     )
 
 }

@@ -1,9 +1,9 @@
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
-import { Icon } from "@/component/atoms/Media";
+import Icon from "@/component/atoms/Media/Icon";
 import { setIsVisible, setTitle, setAuthor, setFile } from "@/store/features/readerSlice";
-import { fetchSongById } from "@/store/features/songById";
+import { fetchSongById } from "@/store/features/songByIdSlice";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
 const StyledDiv = styled.div<{hover:boolean}>`
@@ -71,19 +71,17 @@ function MusicItem({title='', author='', username='', file={}, id='', onClick={}
     const [like, setLike] = useState(false);
     const [colorLike, setColorLike] = useState('grey');
 
-    const songById = useAppSelector((state) => state.songById);
+    const token = useAppSelector((state: any) => state.authentication.token);
 
     const dispatch = useAppDispatch();
-
-    useEffect(() => {
-        dispatch(fetchSongById(id));
-    }, [])
+    let item = {
+        id: id,
+        token: token
+    }
 
     const handleClick = () => {
         dispatch(setIsVisible());
-        dispatch(setTitle(title));
-        dispatch(setAuthor(author));
-        dispatch(setFile(file))
+        dispatch(fetchSongById(item));
     }
 
     return (

@@ -11,7 +11,7 @@ export const register = createAsyncThunk('auth/register', async (registerForm:an
 
     const { username, password, email } = registerForm;
 
-    return fetch('http://localhost:8000/register', {
+    return fetch(process.env.NEXT_PUBLIC_ROOT_ENDPOINT+'/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

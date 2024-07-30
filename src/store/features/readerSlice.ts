@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-require('dotenv').config()
 
 
 let initialState = {
@@ -14,9 +13,14 @@ let initialState = {
     status: "idle"
 }
 
-export const fetchReader = createAsyncThunk('reader/fetchReader', async () => {
+export const fetchReader = createAsyncThunk('reader/fetchReader', async (token) => {
 
-    return fetch('http://localhost:8000/api/readers')
+    return fetch('http://localhost:8000/api/readers', {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    )
     .then(response => response.json())
     .then(data => {
         console.log(data)

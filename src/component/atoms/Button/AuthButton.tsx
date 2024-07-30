@@ -12,6 +12,7 @@ const StyledButton = styled.button<{ $width?: string; $height: string; $margin: 
   font-size: 1rem;
   background-color: blue;
   color: white; 
+  cursor: pointer;
   ${props => props.$margin && `margin: ${props.$margin}`}
 `;
 

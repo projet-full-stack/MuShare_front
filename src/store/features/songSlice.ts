@@ -7,11 +7,12 @@ let initialState = {
     status: "idle"
 }
 
-export const fetchSongs = createAsyncThunk('song/fetchSongs', async () => {
-    require('dotenv').config()
-    console.log(process.env.ROOT_ENDPOINT);
-
-    return fetch('http://localhost:8000/api/songs')
+export const fetchSongs = createAsyncThunk('song/fetchSongs', async (token) => {
+    return fetch(process.env.NEXT_PUBLIC_ROOT_ENDPOINT+'/api/songs', {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
 
     .then(response => response.json())
     .then(data => {

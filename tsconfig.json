@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/component/molecules/musicItemMolecule"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/component/molecules/musicItemMolecule", "src/component/molecules/readerMolecule/readerMolecule.jsx", "src/component/organisms/navbarOrganism"],
   "exclude": ["node_modules"]
 }
