@@ -1,8 +1,8 @@
-import { Logo } from "@/component/atoms/Typography";
 import SearchBarMolecule from "@/component/molecules/searchMolecule/SearchBarMolecule";
 import SearchSongsMolecule from "@/component/molecules/searchMolecule/SearchSongs";
 import { useState } from "react";
 import styled from "styled-components";
+import ReaderOrganism from "../readerOrganism/readerOrganism";
 
 const StyledDiv = styled.div`
 position: absolute;
@@ -15,12 +15,11 @@ function SearchOrganism() {
     const [value, setValue] = useState('');
     return (
         <>
-        <Logo />
         <StyledDiv>  
             <SearchBarMolecule value={value} setValue={setValue}/>
         </StyledDiv>
         <SearchSongsMolecule value={value}/>
-
+        <ReaderOrganism />
         </>
     )
 }

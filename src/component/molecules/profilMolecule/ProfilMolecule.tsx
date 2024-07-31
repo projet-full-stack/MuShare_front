@@ -60,7 +60,7 @@ const ProfilMolecule = () => {
       {isLoaded === "fulfilled" &&
         <>
           <Input.InputField placeholder="Nom d'utilisateur" value={username} type="text" width="20rem" height="2rem" margin="auto" onChange={handleChangeUsername}/>
-          <Input.InputField placeholder="Email" type="text" value={email} width="20rem" height="2rem" margin="auto" onChange={handleChangeEmail}/>
+          <Input.InputField $disabled={true} placeholder="Email" type="text" value={email} width="20rem" height="2rem" margin="auto" onChange={handleChangeEmail}/>
           <Button.FormButton type="submit" children="Enregistrer les modifications" margin="auto" onClick={handleClickUpdate}/>
         </>
       }

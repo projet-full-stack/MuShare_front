@@ -5,7 +5,7 @@ import Container from '@/component/atoms/Container';
 import ControlTrackMolecule from '../../molecules/ControlTrackMolecule/ControlTrackMolecule';
 import MusicReaderMolecule from '@/component/molecules/MusicReaderMolecule/MusicReaderMolecule';
 
-function ReaderOrganisme() {
+function ReaderOrganism() {
   const dispatch = useAppDispatch()
   const isVisible = useAppSelector((state) => state.reader.isVisible);
   const token = useAppSelector((state) => state.authentication.token);
@@ -41,4 +41,4 @@ function ReaderOrganisme() {
   }
     
 }
-export default ReaderOrganisme
+export default ReaderOrganism
