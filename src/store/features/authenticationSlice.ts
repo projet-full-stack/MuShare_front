@@ -5,13 +5,13 @@ import { cookies } from "next/headers";
 const initialState = {
     token: null,
     refreshToken: null,
+    login: null,
     status: "idle"
 }
 
 export const authenticate = createAsyncThunk('auth/fetchToken', async (loginForm:any) => {
 
     const { username, password } = loginForm;
-    console.log("ALED")
 
     return fetch(process.env.NEXT_PUBLIC_ROOT_ENDPOINT+'/api/login_check', {
         method: 'POST',
@@ -23,7 +23,7 @@ export const authenticate = createAsyncThunk('auth/fetchToken', async (loginForm
     )
     .then(response => response.json())
     .then(data => {
-        return data
+        return [data, username]
     })
 });
 
@@ -34,21 +34,20 @@ const authenticationSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(authenticate.pending, (state) => {
             state.status = 'loading';
-            console.log("aaaaaaaaaaaaaaaaaaa")
         })
         .addCase(authenticate.fulfilled, (state, action) => {
             state.status = 'succeeded';
-            console.log('aled')
-            state.token = action.payload.token;
+            state.token = action.payload[0].token;
             // localStorage.setItem('token', action.payload.token);
-            state.refreshToken = action.payload.refreshToken;
+            state.refreshToken = action.payload[0].refreshToken;
+            state.login = action.payload[1];
         })
         .addCase(authenticate.rejected, (state) => {
             state.status = 'failed';
-            console.log("YYYYYYYYY")
             state.token = null;
             // localStorage.removeItem('token');
             state.refreshToken = null;
+            state.login = null;
       })
     }
 });

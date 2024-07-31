@@ -6,7 +6,6 @@ import ReaderOrganisme from "../readerOrganism/readerOrganism"
 function HomeOrganism() {
     return (
         <>
-          <HomeMolecule />
           <RecentMusicsMolecule />
           <ReaderOrganisme/>
 

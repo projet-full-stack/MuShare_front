@@ -10,13 +10,10 @@ const MusicReaderMolecule = forwardRef(function MusicReaderMolecule(props: any, 
     const [maxTime, setMaxTime] = useState();
     const progressBarRef = useRef()
 
-    const [currentTime, setCurrentTime] = useState()
-    const [currentTimeString, setCurrentTimeString] = useState()
-
     return (
         <Media.MusicReader>
             <CurrentTrack src={props.src} {...{ ref, setDuration, progressBarRef }}/>
-            <ProgressBarMolecule ref={progressBarRef} audioRef={ref} duration={duration} maxTime={maxTime} currentTime={currentTime} currentTimeString={currentTimeString}/>
+            <ProgressBarMolecule ref={progressBarRef} audioRef={ref} duration={duration} maxTime={maxTime}/>
         </Media.MusicReader>
     )
 })

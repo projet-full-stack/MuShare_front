@@ -5,8 +5,7 @@ import { forwardRef } from 'react';
 const ProgressBarMolecule = forwardRef(function ProgressBarMolecule(props: any, ref: any) {
     
     function handleProgressChange()  {
-      console.log(ref.current.value)
-        props.audioRef.current.currentTime = ref.current.value;
+      props.audioRef.current.currentTime = props.currentTime;
       }
 
       const formatTime = (time: any) => {
@@ -26,7 +25,7 @@ const ProgressBarMolecule = forwardRef(function ProgressBarMolecule(props: any, 
       <>
       <SpanTrackTime audioRef={props.audioRef} formatTime={formatTime}></SpanTrackTime>
       <div className="wrapper">
-          <input id="timeInput" ref={ref} type="range" min="0" max={props.duration} value={props.currentTime} onChange={handleProgressChange}/>
+          <input id="timeInput" ref={ref} disabled type="range" min="0" max={props.duration} value={props.currentTime} onChange={handleProgressChange}/>
       </div>
       <span id="ostDuration">{formatTime(props.duration)}</span>
       </>}

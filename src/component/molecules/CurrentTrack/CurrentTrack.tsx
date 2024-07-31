@@ -4,9 +4,9 @@ import { forwardRef } from 'react';
 const CurrentTrack = forwardRef(function CurrentTrack(props: any, ref: any) {
 
     function handleTimeUpdated() {
-      console.log(ref.current.currentTime);
+      // console.log(ref.current.currentTime);
 
-      console.log( props.progressBarRef.current.value)
+      // console.log( props.progressBarRef.current.value)
       props.progressBarRef.current.value = ref.current.currentTime
     } 
 

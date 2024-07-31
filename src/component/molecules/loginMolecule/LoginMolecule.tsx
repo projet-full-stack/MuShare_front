@@ -20,7 +20,6 @@ const LoginMolecul = () => {
         const loginValue = login.current.value
         const passwordValue = password.current.value
         const auth = {username: loginValue, password: passwordValue}
-        console.log("JPP")
         dispatch(authenticate(auth)).then(() => {
             router.push('/')
         })

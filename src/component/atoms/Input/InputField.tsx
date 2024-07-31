@@ -17,7 +17,7 @@ const InputField = forwardRef(function InputField(props: any, ref: any) {
     
     return (
         <>
-            <StyledInput ref={ref} $margin={props.margin} $width={props.width} $height={props.height} type={props.type} placeholder={props.placeholder} 
+            <StyledInput ref={ref} $margin={props.margin} $width={props.width} $height={props.height} type={props.type} placeholder={props.placeholder} value={props.value} onChange={props.onChange} 
             />
         </>
     )

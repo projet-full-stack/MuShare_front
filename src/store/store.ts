@@ -7,6 +7,8 @@ import createSongSlice from "./features/createSong";
 import authenticationSlice from "./features/authenticationSlice";
 import registerSlice from "./features/registerSlice";
 import songByIdSlice from "./features/songByIdSlice";
+import userSlice from "./features/userSlice";
+import updateUserSlice from "./features/updateUserSlice";
 
 const store = configureStore({
     reducer: {
@@ -18,6 +20,8 @@ const store = configureStore({
         reader: readerSlice.reducer,
         authentication: authenticationSlice.reducer,
         register: registerSlice.reducer,
+        user: userSlice.reducer,
+        updateUser: updateUserSlice.reducer
     },
     });
 
