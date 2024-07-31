@@ -6,6 +6,7 @@ import MusicItem from "@/component/molecules/musicItemMolecule/MusicItem";
 import { fetchSongsLasts } from "@/store/features/lastSongSlice";
 import { CircularProgress } from "@mui/material";
 import { useSelector } from "react-redux";
+import { deleteSong } from "@/store/features/deleteSongSlice";
 
 const StyledRecentMusicMolecule = styled.div`
     position: absolute;
@@ -22,7 +23,11 @@ function RecentMusicsMolecule() {
     const dispatch = useAppDispatch();
     const songs = useAppSelector((state) => state.songs);
     const token = useSelector((state: any) => state.authentication.token);
+    const idUser = useSelector((state: any) => state.authentication.idUser);
+    const deletedStatus = useAppSelector((state) => state.deleteSong.status)
     const [isClient, setIsClient] = useState(false);
+    const [isDeleting, setIsDeleting] = useState(false);
+
     useEffect(() => {
         setIsClient(true)
       }, [])
@@ -31,6 +36,18 @@ function RecentMusicsMolecule() {
         dispatch(fetchSongsLasts(token));
     }, []);
 
+    const handleDeleteSong = (e:any, id: any) => {
+        dispatch(deleteSong({id: id, token: token}));
+        e.stopPropagation();
+        setIsDeleting(true);
+    };
+
+    useEffect(() => {
+        if (deletedStatus === 'succeeded' && isDeleting) {
+            dispatch(fetchSongsLasts(token));
+            setIsDeleting(false);
+        }
+    }, [deletedStatus, dispatch, isDeleting, setIsDeleting]);
     
     return (
         <StyledRecentMusicMolecule>
@@ -38,7 +55,7 @@ function RecentMusicsMolecule() {
             <Typography.Title>Musiques ajoutées récemment :</Typography.Title>
             {songs.status === 'loading' && <CircularProgress sx={{marginLeft:"45%"}}/>}
             {songs.status === 'succeeded' && songs.songs.map((song: any) => (
-                <MusicItem title={song.title} author={song.author} username={song.owner.username} file={song.downloadedFile} id={song.id}></MusicItem>
+                <MusicItem key={song.id} idUser={idUser} title={song.title} author={song.author} username={song.owner.username} ownerId={song.owner.id} file={song.downloadedFile} id={song.id} onDelete={handleDeleteSong}></MusicItem>
             ))}
 
         </StyledRecentMusicMolecule>

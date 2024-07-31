@@ -22,7 +22,6 @@ export const fetchSongsLasts = createAsyncThunk('song/fetchSongs', async (token)
     }})
     .then(response => response.json())
     .then(data => {
-        console.log(data);
         return data
     })
 });
@@ -38,7 +37,8 @@ const lastSongSlice = createSlice({
         })
         .addCase(fetchSongsLasts.fulfilled, (state, action) => {
             state.status = 'succeeded';
-            state.lastSongs = action.payload;
+            console.log(action.payload)
+            state.lastSongs = [...action.payload].sort((song1: any, song2: any): number => song1.id > song2.id ? -1 : 1) as never[];
         })
         .addCase(fetchSongsLasts.rejected, (state, action) => {
             state.status = 'failed';

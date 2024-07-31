@@ -2,9 +2,14 @@ import InputField  from "@/component/atoms/Input";
 import { useState } from "react";
 
 function SearchBarMolecule({value='', ...props}) {
+
+    function handleOnChange(e: any) {
+        props.setValue(e.target.value);
+    }
+
     return (
         <>
-            <InputField.InputField placeholder="Rechercher" value={value} setValue={props.setValue}/>
+            <InputField.InputField placeholder="Rechercher" value={value} onChange={handleOnChange}/>
         </>
     )
 }

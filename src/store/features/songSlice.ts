@@ -30,7 +30,7 @@ const songSlice = createSlice({
         })
         .addCase(fetchSongs.fulfilled, (state, action) => {
             state.status = 'succeeded';
-            state.songs = action.payload;
+            state.songs = [...action.payload].sort((song1: any, song2: any): number => song1.id > song2.id ? -1 : 1) as never[];
         })
         .addCase(fetchSongs.rejected, (state, action) => {
             state.status = 'failed';

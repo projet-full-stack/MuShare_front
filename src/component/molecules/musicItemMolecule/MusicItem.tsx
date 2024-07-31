@@ -66,7 +66,7 @@ z-index: 10;
 }
 `;
 
-function MusicItem({title='', author='', username='', file={}, id='', onClick={}}) {
+function MusicItem({title='', author='', username='', file={}, id='', onClick={}, idUser='', ownerId='', onDelete = (e: any, id: number) => {}}) {
     const [hover, setHover] = useState(false);
     const [like, setLike] = useState(false);
     const [colorLike, setColorLike] = useState('grey');
@@ -78,6 +78,8 @@ function MusicItem({title='', author='', username='', file={}, id='', onClick={}
         id: id,
         token: token
     }
+
+    const isOwner = ownerId === idUser && idUser !== '';
 
     const handleClick = () => {
         dispatch(setIsVisible());
@@ -92,7 +94,7 @@ function MusicItem({title='', author='', username='', file={}, id='', onClick={}
             setLike(like ? false : true);
         }}
         >
-        <Icon icon='favorite' hover={colorLike} fill={like} size={30}/>
+        {isOwner && <Icon icon='delete' hover={colorLike} size={30} onClick={(e) => onDelete(e,id)} />}
         </StyledFavorite>
         <StyledDiv hover={hover} onMouseOver={() => {
             setHover(true);

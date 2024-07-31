@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 const initialState = {
     token: null,
     refreshToken: null,
-    login: null,
+    idUser: null,
     status: "idle"
 }
 
@@ -22,8 +22,12 @@ export const authenticate = createAsyncThunk('auth/fetchToken', async (loginForm
     }
     )
     .then(response => response.json())
-    .then(data => {
-        return [data, username]
+    .then(async (data) => {
+       const idUser=  await fetch(process.env.NEXT_PUBLIC_ROOT_ENDPOINT+`/api/users/username/${username}`, {
+            headers: {
+                Authorization: `Bearer ${data.token}`
+            }})
+        return [data, (await idUser.json()).id]
     })
 });
 
@@ -38,16 +42,14 @@ const authenticationSlice = createSlice({
         .addCase(authenticate.fulfilled, (state, action) => {
             state.status = 'succeeded';
             state.token = action.payload[0].token;
-            // localStorage.setItem('token', action.payload.token);
             state.refreshToken = action.payload[0].refreshToken;
-            state.login = action.payload[1];
+            state.idUser = action.payload[1];
         })
         .addCase(authenticate.rejected, (state) => {
             state.status = 'failed';
             state.token = null;
-            // localStorage.removeItem('token');
             state.refreshToken = null;
-            state.login = null;
+            state.idUser = null;
       })
     }
 });

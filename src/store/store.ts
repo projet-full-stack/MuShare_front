@@ -9,6 +9,7 @@ import registerSlice from "./features/registerSlice";
 import songByIdSlice from "./features/songByIdSlice";
 import userSlice from "./features/userSlice";
 import updateUserSlice from "./features/updateUserSlice";
+import deleteSongSlice from "./features/deleteSongSlice";
 
 const store = configureStore({
     reducer: {
@@ -21,7 +22,8 @@ const store = configureStore({
         authentication: authenticationSlice.reducer,
         register: registerSlice.reducer,
         user: userSlice.reducer,
-        updateUser: updateUserSlice.reducer
+        updateUser: updateUserSlice.reducer,
+        deleteSong: deleteSongSlice.reducer,
     },
     });
 
