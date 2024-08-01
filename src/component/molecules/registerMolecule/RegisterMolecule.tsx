@@ -1,8 +1,12 @@
 import React, { useRef } from 'react'
-import { Button, Container, Input, Typography } from '@/component/atoms'
+import Button from '@/component/atoms/Button'
+import Container from '@/component/atoms/Container'
+import Input from '@/component/atoms/Input'
+import Typography from '@/component/atoms/Typography'
 import { useAppDispatch } from '@/app/hooks'
 import { register } from '@/store/features/registerSlice'
 import { useSelector } from 'react-redux'
+import { useRouter } from 'next/navigation'
 
 function RegisterMolecul() {
 
@@ -30,6 +34,7 @@ function RegisterMolecul() {
   }
   if(isCreated){
     alert('Votre compte a été créé avec succès')
+    useRouter().push('/login')
   }
   return (
     <Container.CenterDiv $height="40rem" $margintop='3rem' $width='30rem'>
